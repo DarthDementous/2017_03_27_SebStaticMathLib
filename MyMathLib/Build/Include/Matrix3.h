@@ -10,7 +10,7 @@
 #include "Vector3.h"
 
 template <class T>
-///Matrix4 = 3D Matrix with translation
+///Matrix4 = 3D Matrix with translations
 class Matrix3
 {
 
