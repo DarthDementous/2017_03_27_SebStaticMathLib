@@ -4,7 +4,7 @@
 
 ///Vector3 = 3D Vector with no translation capabilities
 template <class T>
-class LIBRARY_API Vector3
+class Vector3
 {
 public:
 	///Constructor

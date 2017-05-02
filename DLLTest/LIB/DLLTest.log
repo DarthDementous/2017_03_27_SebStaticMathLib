@@ -1,0 +1,26 @@
+﻿  Utility_test.cpp
+Utility_test.cpp(7): warning C4273: 'degToRad': inconsistent dll linkage
+  C:\Users\ATWindows7\Documents\Repositories\2017_03_27_SebStaticMathLib\DLLTest\Build\Include\Utility_test.h(8): note: see previous definition of 'degToRad'
+Utility_test.cpp(12): warning C4273: 'radToDeg': inconsistent dll linkage
+  C:\Users\ATWindows7\Documents\Repositories\2017_03_27_SebStaticMathLib\DLLTest\Build\Include\Utility_test.h(9): note: see previous definition of 'radToDeg'
+Utility_test.cpp(17): warning C4273: 'LinearHalf': inconsistent dll linkage
+  C:\Users\ATWindows7\Documents\Repositories\2017_03_27_SebStaticMathLib\DLLTest\Build\Include\Utility_test.h(10): note: see previous definition of 'LinearHalf'
+  Vector2_Test.cpp
+Vector2_Test.cpp(14): error C2491: 'Vec2<T>::Vec2': definition of dllimport function not allowed
+Vector2_Test.cpp(17): error C2491: 'Vec2<T>::Vec2': definition of dllimport function not allowed
+Vector2_Test.cpp(20): error C2491: 'Vec2<T>::Vec2': definition of dllimport function not allowed
+Vector2_Test.cpp(29): error C2491: 'Vec2<T>::operator +': definition of dllimport function not allowed
+Vector2_Test.cpp(35): error C2491: 'Vec2<T>::operator -': definition of dllimport function not allowed
+Vector2_Test.cpp(42): error C2491: 'Vec2<T>::operator =': definition of dllimport function not allowed
+Vector2_Test.cpp(63): error C2491: 'Vec2<T>::operator -': definition of dllimport function not allowed
+Vector2_Test.cpp(70): error C2491: 'Vec2<T>::operator float *': definition of dllimport function not allowed
+Vector2_Test.cpp(76): error C2491: 'Vec2<T>::operator []': definition of dllimport function not allowed
+Vector2_Test.cpp(85): error C2491: 'Vec2<T>::operator +=': definition of dllimport function not allowed
+Vector2_Test.cpp(92): error C2491: 'Vec2<T>::operator -=': definition of dllimport function not allowed
+Vector2_Test.cpp(118): error C2491: 'Vec2<T>::operator ==': definition of dllimport function not allowed
+Vector2_Test.cpp(127): error C2491: 'Vec2<T>::operator !=': definition of dllimport function not allowed
+Vector2_Test.cpp(135): error C2491: 'Vec2<T>::dot': definition of dllimport function not allowed
+Vector2_Test.cpp(141): error C2491: 'Vec2<T>::magnitude': definition of dllimport function not allowed
+Vector2_Test.cpp(148): error C2491: 'Vec2<T>::normalise': definition of dllimport function not allowed
+Vector2_Test.cpp(155): error C2491: 'Vec2<T>::getNormal': definition of dllimport function not allowed
+  Generating Code...

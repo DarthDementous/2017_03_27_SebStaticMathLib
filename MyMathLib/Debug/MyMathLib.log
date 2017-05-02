@@ -1,8 +1,8 @@
 ﻿  Utility.cpp
-c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\utility.cpp(7): warning C4273: 'degToRad': inconsistent dll linkage
-  c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\utility.h(10): note: see previous definition of 'degToRad'
-c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\utility.cpp(12): warning C4273: 'radToDeg': inconsistent dll linkage
-  c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\utility.h(11): note: see previous definition of 'radToDeg'
-c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\utility.cpp(17): warning C4273: 'LinearHalf': inconsistent dll linkage
-  c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\utility.h(12): note: see previous definition of 'LinearHalf'
-  MyMathLib.vcxproj -> C:\Users\s171671\Documents\Repositories\2017_03_27_SebStaticMathLib\MyMathLib\Build\MyMathLib_d.lib
+c:\users\atwindows7\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\utility.cpp(7): warning C4273: 'degToRad': inconsistent dll linkage
+  c:\users\atwindows7\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\utility.h(10): note: see previous definition of 'degToRad'
+c:\users\atwindows7\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\utility.cpp(12): warning C4273: 'radToDeg': inconsistent dll linkage
+  c:\users\atwindows7\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\utility.h(11): note: see previous definition of 'radToDeg'
+c:\users\atwindows7\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\utility.cpp(17): warning C4273: 'LinearHalf': inconsistent dll linkage
+  c:\users\atwindows7\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\utility.h(12): note: see previous definition of 'LinearHalf'
+  MyMathLib.vcxproj -> C:\Users\ATWindows7\Documents\Repositories\2017_03_27_SebStaticMathLib\MyMathLib\Build\MyMathLib_d.lib

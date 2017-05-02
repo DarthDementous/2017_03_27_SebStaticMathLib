@@ -1,0 +1,5 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  Main.cpp
+Main.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: void __thiscall Vec2<float>::normalise(void)" (__imp_?normalise@?$Vec2@M@@QAEXXZ)
+Main.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __thiscall Vec2<float>::Vec2<float>(float,float)" (__imp_??0?$Vec2@M@@QAE@MM@Z)
+C:\Users\ATWindows7\Documents\Repositories\2017_03_27_SebStaticMathLib\TestingGrounds\DLL\TestingGrounds.exe : fatal error LNK1120: 2 unresolved externals
