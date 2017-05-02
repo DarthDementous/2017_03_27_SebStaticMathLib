@@ -1,5 +1,49 @@
 ﻿  unittest.cpp
-  main.cpp
-  Generating Code...
-  LINK : C:\Users\s171671\Documents\Repositories\2017_0327_SebStaticMathLib\Debug\TestLib.exe not found or not built by the last incremental link; performing full link
-  TestLib.vcxproj -> C:\Users\s171671\Documents\Repositories\2017_0327_SebStaticMathLib\Debug\TestLib.exe
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector2.h(43): error C2491: 'Vector2<T>::operator *': definition of dllimport function not allowed
+  c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector2.h(124): note: see reference to class template instantiation 'Vector2<T>' being compiled
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector2.h(50): error C2491: 'operator *': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector2.h(92): error C2491: 'Vector2<T>::operator *=': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector2.h(98): error C2491: 'Vector2<T>::operator /=': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(11): error C2487: 'Vector3<T>::{ctor}': member of dll interface class may not be declared with dll interface
+  c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(132): note: see reference to class template instantiation 'Vector3<T>' being compiled
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(12): error C2487: 'Vector3<T>::{ctor}': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(13): error C2487: 'Vector3<T>::{ctor}': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(23): error C2487: '+': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(28): error C2487: '-': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(32): error C2487: '=': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(41): error C2491: 'Vector3<T>::operator *': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(49): error C2491: 'operator *': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(52): error C2487: '-': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(57): error C2487: '==': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(64): error C2487: '!=': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(74): error C2487: '+=': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(80): error C2487: '-=': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(90): error C2491: 'Vector3<T>::operator *=': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(96): error C2491: 'Vector3<T>::operator /=': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(101): error C2487: 'dot': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(105): error C2487: 'cross': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(115): error C2487: 'magnitude': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(119): error C2487: 'normalise': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(123): error C2487: 'getNormal': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(129): error C2487: '.PAM': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(131): error C2487: '[]': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector4.h(39): error C2491: 'Vector4<T>::operator *': definition of dllimport function not allowed
+  c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector4.h(130): note: see reference to class template instantiation 'Vector4<T>' being compiled
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector4.h(47): error C2491: 'operator *': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector4.h(88): error C2491: 'Vector4<T>::operator *=': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector4.h(94): error C2491: 'Vector4<T>::operator /=': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector2.h(43): error C2491: 'Vector2<float>::operator *': definition of dllimport function not allowed
+  c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\testlib\unittest.cpp(37): note: see reference to class template instantiation 'Vector2<float>' being compiled
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector2.h(92): error C2491: 'Vector2<float>::operator *=': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector2.h(98): error C2491: 'Vector2<float>::operator /=': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(11): error C2487: 'Vector3<float>::{ctor}': member of dll interface class may not be declared with dll interface
+  c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\testlib\unittest.cpp(40): note: see reference to class template instantiation 'Vector3<float>' being compiled
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(12): error C2487: 'Vector3<float>::{ctor}': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(13): error C2487: 'Vector3<float>::{ctor}': member of dll interface class may not be declared with dll interface
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(41): error C2491: 'Vector3<float>::operator *': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(90): error C2491: 'Vector3<float>::operator *=': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(96): error C2491: 'Vector3<float>::operator /=': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector4.h(39): error C2491: 'Vector4<float>::operator *': definition of dllimport function not allowed
+  c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\testlib\unittest.cpp(43): note: see reference to class template instantiation 'Vector4<float>' being compiled
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector4.h(88): error C2491: 'Vector4<float>::operator *=': definition of dllimport function not allowed
+c:\users\s171671\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector4.h(94): error C2491: 'Vector4<float>::operator /=': definition of dllimport function not allowed

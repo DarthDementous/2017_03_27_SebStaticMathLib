@@ -29,6 +29,8 @@
 #define Matrix4 Matrix4<float>
 
 
+
+
 #ifndef NO_DEFAULT_STREAM_OPERATOR
 
 	std::ostream& operator << (std::ostream& os, Vector2& rhs) { 
