@@ -1,0 +1,5 @@
+﻿  unittest.cpp
+  main.cpp
+  Generating Code...
+  LINK : C:\Users\s171671\Documents\Repositories\2017_0327_SebStaticMathLib\Debug\TestLib.exe not found or not built by the last incremental link; performing full link
+  TestLib.vcxproj -> C:\Users\s171671\Documents\Repositories\2017_0327_SebStaticMathLib\Debug\TestLib.exe
