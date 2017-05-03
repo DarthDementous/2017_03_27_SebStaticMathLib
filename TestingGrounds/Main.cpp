@@ -1,7 +1,9 @@
-#include <Vector2_Test.h>
 #include <iostream>
+#include <Vector2_Test.h>
+
 void main() {
-	Vec2<float> test = Vec2<float>{ 4, 4 };
-	test.normalise();
+	Vec2<float> memes = Vec2<float>{ 2, 2 };
+	memes.normalize();
+	std::cout << memes.x << " " << memes.y << std::endl;
 	system("pause");
 }

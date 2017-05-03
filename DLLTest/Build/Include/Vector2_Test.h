@@ -14,7 +14,7 @@ public:
 	 Vec2(T a_x, T a_y);
 	 Vec2(const Vec2& a_rhs); //Copy/reference constructor
 
-																			///Variables
+	///Variables
 	union
 	{
 		struct { T x, y; };
@@ -54,17 +54,19 @@ public:
 #pragma endregion
 
 #pragma region Functions
-	 float dot(const Vec2& a_rhs);
+	 T dot(const Vec2& a_rhs);
 
-	 float magnitude();
+	 T magnitude();
 
-	 void normalise();
+	 void normalize();
 
 	 Vec2 getNormal();
 #pragma endregion
 	//Casts vector to float pointer
-	 explicit operator float* ();
+	 explicit operator T* ();
 
-	 float & operator [] (unsigned int index);
+	 T & operator [] (unsigned int index);
 };
+
+
 

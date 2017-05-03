@@ -1,4 +1,0 @@
-﻿  Main.cpp
-Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall Vec2<float>::Vec2<float>(float,float)" (__imp_??0?$Vec2@M@@QAE@MM@Z) referenced in function _main
-Main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall Vec2<float>::normalise(void)" (__imp_?normalise@?$Vec2@M@@QAEXXZ) referenced in function _main
-C:\Users\ATWindows7\Documents\Repositories\2017_03_27_SebStaticMathLib\TestingGrounds\Debug\TestingGrounds.exe : fatal error LNK1120: 2 unresolved externals

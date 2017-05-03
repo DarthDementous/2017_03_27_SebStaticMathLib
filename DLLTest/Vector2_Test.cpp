@@ -64,13 +64,13 @@ Vec2<T> Vec2<T>::operator -() const
 
 template<class T>
 //Casts vector to float pointer
-Vec2<T>::operator float*()
+Vec2<T>::operator T*()
 {
 	return &x;											// * Return start of memory address for Vec2
 }
 
 template<class T>
-float & Vec2<T>::operator[](unsigned int index)
+T & Vec2<T>::operator[](unsigned int index)
 {
 	return v[index];                                   // Return specified axis of Vector
 }
@@ -129,32 +129,35 @@ bool Vec2<T>::operator!=(const Vec2 & a_rhs) const
 
 #pragma region Functions
 template<class T>
-float Vec2<T>::dot(const Vec2 & a_rhs)
+T Vec2<T>::dot(const Vec2 & a_rhs)
 {
 	return ((x * a_rhs.x) + (y * a_rhs.y));
 }
 
 template<class T>
-float Vec2<T>::magnitude()
+T Vec2<T>::magnitude()
 {
-	return float(sqrt14((x * x) + (y * y)));                       //Square root returns a double, typecast to float
+	return T(sqrt14((x * x) + (y * y)));                       //Square root returns a double, typecast to float
 }
 
 template<class T>
-void Vec2<T>::normalise()
+void Vec2<T>::normalize()
 {
-	float m = magnitude();                                        //Compute magnitude only once for efficiency
+	T m = magnitude();                                        //Compute magnitude only once for efficiency
 	x /= m, y /= m;
 }
 
 template<class T>
 Vec2<T> Vec2<T>::getNormal()
 {
-	float m = magnitude();
+	T m = magnitude();
 	return Vec2<T>(x /= m, y /= m);                       //Return normalized version of lhs
 }
 #pragma endregion
 
+///Explicit instantiation required for template classes
 
-
-
+EXPIMP_TEMPLATE template class LIBRARY_API Vec2<int>;
+EXPIMP_TEMPLATE template class LIBRARY_API Vec2<short>;
+EXPIMP_TEMPLATE template class LIBRARY_API Vec2<double>;
+EXPIMP_TEMPLATE template class LIBRARY_API Vec2<float>;

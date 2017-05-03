@@ -1,7 +1,4 @@
-#define _USE_MATH_DEFINES
-
 #include <Utility_test.h>
-#include <cmath>
 
 float degToRad(float degrees)
 {
