@@ -140,16 +140,29 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(ProjectDir)Build\</OutDir>
     <TargetName>$(ProjectName)_d</TargetName>
+    <IntDir>$(ProjectDir)Config\$(Configuration)\</IntDir>
+    <IncludePath>$(ProjectDir)Build\Include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DLL_d|Win32'">
     <OutDir>$(ProjectDir)Build\</OutDir>
     <TargetName>$(ProjectName)_d</TargetName>
+    <IntDir>$(ProjectDir)Config\$(Configuration)\</IntDir>
+    <IncludePath>$(ProjectDir)Build\Include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)Build\</OutDir>
+    <IntDir>$(ProjectDir)Config\$(Configuration)\</IntDir>
+    <IncludePath>$(ProjectDir)Build\Include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DLL|Win32'">
     <OutDir>$(ProjectDir)Build\</OutDir>
+    <IntDir>$(ProjectDir)Config\$(Configuration)\</IntDir>
+    <IncludePath>$(ProjectDir)Build\Include\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='LIB|Win32'">
+    <OutDir>$(ProjectDir)Build\</OutDir>
+    <IntDir>$(ProjectDir)Config\$(Configuration)\</IntDir>
+    <IncludePath>$(ProjectDir)Build\Include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -279,13 +292,20 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Matrix2.cpp" />
+    <ClCompile Include="Matrix3.cpp" />
+    <ClCompile Include="Matrix4.cpp" />
+    <ClCompile Include="tmp.cpp" />
     <ClCompile Include="Utility.cpp" />
+    <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="Vector3.cpp" />
+    <ClCompile Include="Vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Build\Include\Matrix2.h" />
     <ClInclude Include="Build\Include\Matrix3.h" />
     <ClInclude Include="Build\Include\Matrix4.h" />
-    <ClInclude Include="Build\Include\Utility.h" />
+    <ClInclude Include="Build\Include\MathLib_Utility.h" />
     <ClInclude Include="Build\Include\Vector2.h" />
     <ClInclude Include="Build\Include\Vector3.h" />
     <ClInclude Include="Build\Include\Vector4.h" />
