@@ -1,0 +1,10 @@
+﻿  Matrix4.cpp
+c:\users\atwindows7\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\matrix4.h(75): error C2955: 'Vector4': use of class template requires template argument list
+  c:\users\atwindows7\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector4.h(10): note: see declaration of 'Vector4'
+  c:\users\atwindows7\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\matrix4.cpp(235): note: see reference to class template instantiation 'Matrix4<int>' being compiled
+  Matrix3.cpp
+c:\users\atwindows7\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\matrix3.h(70): error C2955: 'Vector3': use of class template requires template argument list
+  c:\users\atwindows7\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\build\include\vector3.h(10): note: see declaration of 'Vector3'
+  c:\users\atwindows7\documents\repositories\2017_03_27_sebstaticmathlib\mymathlib\matrix3.cpp(207): note: see reference to class template instantiation 'Matrix3<int>' being compiled
+  Matrix2.cpp
+  Generating Code...

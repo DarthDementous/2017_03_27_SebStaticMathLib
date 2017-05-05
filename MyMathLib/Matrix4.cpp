@@ -1,4 +1,5 @@
 #include "Matrix4.h"
+#include <math.h>
 
 ///Constructors
 template<class T>
@@ -14,7 +15,7 @@ m31(a_rhs.m31), m32(a_rhs.m32), m33(a_rhs.m33), m34(a_rhs.m34),
 m41(a_rhs.m41), m42(a_rhs.m42), m43(a_rhs.m43), m44(a_rhs.m44) {}
 
 template<class T>
-Matrix4<T>::Matrix4(float *a_ptr) : m11(a_ptr[0]), m12(a_ptr[1]), m13(a_ptr[2]), m14(a_ptr[3]),                                   //Construct from list of floats
+Matrix4<T>::Matrix4(T *a_ptr) : m11(a_ptr[0]), m12(a_ptr[1]), m13(a_ptr[2]), m14(a_ptr[3]),                                   //Construct from list of floats
 m21(a_ptr[4]), m22(a_ptr[5]), m23(a_ptr[6]), m24(a_ptr[7]),
 m31(a_ptr[8]), m32(a_ptr[9]), m33(a_ptr[10]), m34(a_ptr[11]),
 m41(a_ptr[12]), m42(a_ptr[13]), m43(a_ptr[14]), m44(a_ptr[15]) {}
@@ -60,9 +61,9 @@ Vector4<T> Matrix4<T>::operator * (const Vector4<T> &a_rhs) const {             
 	*/
 	return Vector4<T>
 		((m11 * a_rhs.x + m21 * a_rhs.y + m31 * a_rhs.z + m41 * a_rhs.w), //NOTE: When multiplying a matrice with a vector, it has to be treated cxr instead of rxc because the vector is
-		(m12 * a_rhs.x + m22 * a_rhs.y + m32 * a_rhs.z + m42 * a_rhs.w), //technically a row vector, even though we're still getting the rows from the lhs and the columns from the rhs.
-			(m13 * a_rhs.x + m23 * a_rhs.y + m33 * a_rhs.z + m43 * a_rhs.w),
-			(m14 * a_rhs.x + m24 * a_rhs.y + m34 * a_rhs.z + m44 * a_rhs.w));
+		 (m12 * a_rhs.x + m22 * a_rhs.y + m32 * a_rhs.z + m42 * a_rhs.w), //technically a row vector, even though we're still getting the rows from the lhs and the columns from the rhs.
+		 (m13 * a_rhs.x + m23 * a_rhs.y + m33 * a_rhs.z + m43 * a_rhs.w),
+		 (m14 * a_rhs.x + m24 * a_rhs.y + m34 * a_rhs.z + m44 * a_rhs.w));
 }
 
 template<class T>
@@ -99,35 +100,35 @@ Matrix4<T> Matrix4<T>::createRotationX(float a_rot) {                          /
 	Matrix4<T> tmp;
 	//Express via indexes for readability, we only change the relevant default values.
 	//Do not touch axis or values for what we're rotating with. (X and x in this case)
-	tmp.mm[1][1] = cosf(a_rot);    //Yy
-	tmp.mm[2][1] = -sinf(a_rot);    //Yz
-	tmp.mm[1][2] = sinf(a_rot);   //Zy
-	tmp.mm[2][2] = cosf(a_rot);    //Zz
+	tmp.mm[1][1] = (T)cosf(a_rot);    //Yy
+	tmp.mm[2][1] = -(T)sinf(a_rot);    //Yz
+	tmp.mm[1][2] = (T)sinf(a_rot);   //Zy
+	tmp.mm[2][2] = (T)cosf(a_rot);    //Zz
 	return tmp;
 }
 
 template<class T>
 Matrix4<T> Matrix4<T>::createRotationY(float a_rot) {                          //Return rotated Matrix4
 	Matrix4<T> tmp;
-	tmp.mm[0][0] = cosf(a_rot);   //Xx
-	tmp.mm[2][0] = sinf(a_rot);   //Xz
-	tmp.mm[0][2] = -sinf(a_rot);  //Zx
-	tmp.mm[2][2] = cosf(a_rot);   //Zz
+	tmp.mm[0][0] = (T)cosf(a_rot);   //Xx
+	tmp.mm[2][0] = (T)sinf(a_rot);   //Xz
+	tmp.mm[0][2] = -(T)sinf(a_rot);  //Zx
+	tmp.mm[2][2] = (T)cosf(a_rot);   //Zz
 	return tmp;
 }
 
 template<class T>
 Matrix4<T> Matrix4<T>::createRotationZ(float a_rot) {                          //Return rotated Matrix4
 	Matrix4<T> tmp;
-	tmp.mm[0][0] = cosf(a_rot);   //Xx
-	tmp.mm[1][0] = -sinf(a_rot);  //Xy
-	tmp.mm[0][1] = sinf(a_rot);   //Yx
-	tmp.mm[1][1] = cosf(a_rot);   //Yy
+	tmp.mm[0][0] = (T)cosf(a_rot);   //Xx
+	tmp.mm[1][0] = -(T)sinf(a_rot);  //Xy
+	tmp.mm[0][1] = (T)sinf(a_rot);   //Yx
+	tmp.mm[1][1] = (T)cosf(a_rot);   //Yy
 	return tmp;
 }
 
 template<class T>
-Matrix4<T> Matrix4<T>::createScale(float a_xScale, float a_yScale, float a_zScale) {           //Return scaled Matrix4
+Matrix4<T> Matrix4<T>::createScale(T a_xScale, T a_yScale, T a_zScale) {           //Return scaled Matrix4
 	Matrix4<T> tmp;
 	tmp.mm[0][0] = a_xScale;          //Xx
 	tmp.mm[1][1] = a_yScale;		  //Yy
@@ -136,28 +137,24 @@ Matrix4<T> Matrix4<T>::createScale(float a_xScale, float a_yScale, float a_zScal
 }
 ///Setters
 template<class T>
-void Matrix4<T>::set(float a_m11, float a_m12, float a_m13, float a_m14,          // Rebuild the matrix with parameters
-	float a_m21, float a_m22, float a_m23, float a_m24,
-	float a_m31, float a_m32, float a_m33, float a_m34,
-	float a_m41, float a_m42, float a_m43, float a_m44)  
+void Matrix4<T>::set(T a_m11, T a_m12, T a_m13, T a_m14,          // Rebuild the matrix with parameters
+	T a_m21, T a_m22, T a_m23, T a_m24,
+	T a_m31, T a_m32, T a_m33, T a_m34,
+	T a_m41, T a_m42, T a_m43, T a_m44)  
 {
-	//Assign values with for loop for readability
-	auto index = 0;
-	for (auto r = 0; i < 3; r++) {
-		for (auto c = 0; i < 3; c++) {
-			mm[r][c] = a_ptr[index];
-			index++;
-		}
-	}
+	m11 = a_m11, m12 = a_m12, m13 = a_m13, m14 = a_m14;
+	m21 = a_m21, m22 = a_m22, m23 = a_m23, m24 = a_m24;
+	m31 = a_m31, m32 = a_m32, m33 = a_m33, m34 = a_m34;
+	m41 = a_m41, m42 = a_m42, m43 = a_m43, m44 = a_m44;
 }
 
 template<class T>
-void Matrix4<T>::set(float *a_ptr)                                        	// rebuild the matrix - expects pointer to array of 4 floats
+void Matrix4<T>::set(T *a_ptr)                                        	// rebuild the matrix - expects pointer to array of 4 floats
 {
 	//Assign values with for loop for readability
 	auto index = 0;
-	for (auto r = 0; i < 4; r++) {
-		for (auto c = 0; i < 4; c++) {
+	for (auto r = 0; r < 4; r++) {
+		for (auto c = 0; c < 4; c++) {
 			mm[r][c] = a_ptr[index];
 			index++;
 		}
@@ -169,44 +166,44 @@ void Matrix4<T>::setRotateX(float a_rot)                                 // Rota
 {
 	//Express via indexes for readability, we only change the relevant values. 
 	//Do not touch axis or values for what we're rotating with. (X and x in this case)
-	mm[1][1] = cosf(a_rot);    //Yy
-	mm[2][1] = -sinf(a_rot);    //Yz
-	mm[1][2] = sinf(a_rot);   //Zy
-	mm[2][2] = cosf(a_rot);    //Zz
+	mm[1][1] = (T)cosf(a_rot);    //Yy
+	mm[2][1] = -(T)sinf(a_rot);    //Yz
+	mm[1][2] = (T)sinf(a_rot);   //Zy
+	mm[2][2] = (T)cosf(a_rot);    //Zz
 }
 
 template<class T>
 void Matrix4<T>::setRotateY(float a_rot)                                 // Rotate Matrix4 on the z axis circle
 {
-	mm[0][0] = cosf(a_rot);   //Xx
-	mm[2][0] = sinf(a_rot);   //Xz
-	mm[0][2] = -sinf(a_rot);  //Zx
-	mm[2][2] = cosf(a_rot);   //Zz
+	mm[0][0] = (T)cosf(a_rot);   //Xx
+	mm[2][0] = (T)sinf(a_rot);   //Xz
+	mm[0][2] = -(T)sinf(a_rot);  //Zx
+	mm[2][2] = (T)cosf(a_rot);   //Zz
 }
 
 template<class T>
 void Matrix4<T>::setRotateZ(float a_rot)                                 // Rotate Matrix4 on the z axis circle
 {
-	mm[0][0] = cosf(a_rot);   //Xx
-	mm[1][0] = -sinf(a_rot);  //Xy
-	mm[0][1] = sinf(a_rot);   //Yx
-	mm[1][1] = cosf(a_rot);   //Yy
+	mm[0][0] = (T)cosf(a_rot);   //Xx
+	mm[1][0] = -(T)sinf(a_rot);  //Xy
+	mm[0][1] = (T)sinf(a_rot);   //Yx
+	mm[1][1] = (T)cosf(a_rot);   //Yy
 }
 
 template<class T>
-void Matrix4<T>::setScale(float a_scaleX, float a_scaleY, float a_scaleZ)                 // Scale matrix by given values
+void Matrix4<T>::setScale(T a_scaleX, T a_scaleY, T a_scaleZ)                 // Scale matrix by given values
 {
-	m[0][0] = a_scaleX; //Xx
-	m[1][1] = a_scaleY; //Yy
-	m[2][2] = a_scaleZ; //Zz
+	mm[0][0] = a_scaleX; //Xx
+	mm[1][1] = a_scaleY; //Yy
+	mm[2][2] = a_scaleZ; //Zz
 }
 
 template<class T>
-void Matrix4<T>::setTranslate(float a_transX, float a_transY, float a_transZ)
+void Matrix4<T>::setTranslate(T a_transX, T a_transY, T a_transZ)
 {
-	m[0][3] = a_transX; //Wx
-	m[1][3] = a_transY; //Wy
-	m[2][3] = a_transZ; //Wz
+	mm[0][3] = a_transX; //Wx
+	mm[1][3] = a_transY; //Wy
+	mm[2][3] = a_transZ; //Wz
 
 }
 
@@ -221,8 +218,9 @@ T Matrix4<T>::getRotation(char a_axis) {
 	{
 		// ONLY WORKS IF NOT SKEWED (FORMS A RIGHT ANGLED TRIANGLE)
 	case 'Z':                                       //atan2 = takes 2 arguments
-		return -atan2(mm[1][1], [0][1]);            //Get the angle between the Y global axis and the local Y axis tan(adj/opp = Yy/Yx). Negative = counter-clockwise
+		return -(T)atan2(double(mm[1][1]), double(mm[0][1]));            //Get the angle between the Y global axis and the local Y axis tan(adj/opp = Yy/Yx). Negative = counter-clockwise
 	}
+	return -(T)atan2(double(mm[1][1]), double(mm[0][1]));
 }
 #pragma endregion
 //Casts matrix to float pointer

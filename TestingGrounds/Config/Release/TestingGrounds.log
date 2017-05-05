@@ -1,0 +1,5 @@
+﻿  Main.cpp
+Main.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: void __thiscall Vector2<float>::normalise(void)" (__imp_?normalise@?$Vector2@M@@QAEXXZ)
+Main.obj : error LNK2001: unresolved external symbol "public: class Vector2<float> __thiscall Vector2<float>::operator*<float>(float)const " (??$?DM@?$Vector2@M@@QBE?AV0@M@Z)
+Main.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __thiscall Vector2<float>::Vector2<float>(float,float)" (__imp_??0?$Vector2@M@@QAE@MM@Z)
+C:\Users\ATWindows7\Documents\Repositories\2017_03_27_SebStaticMathLib\TestingGrounds\Release\TestingGrounds.exe : fatal error LNK1120: 3 unresolved externals

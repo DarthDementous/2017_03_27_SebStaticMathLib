@@ -1,14 +1,5 @@
 #include <Vector2.h>
 
-/*When dealing with multiple template variables the template definitions MUST be on separate lines unless its a friend:
-CLASS:
-template <class T>
-template <typename S>
-
-FRIEND:
-template <class T, typename S>
-*/
-
 #pragma region Constructors
 template<class T>
 Vector2<T>::Vector2() : x(0), y(0) {}
@@ -42,18 +33,23 @@ Vector2<T> & Vector2<T>::operator=(const Vector2 & a_rhs)
 }
 
 template<class T>
-template<typename S>
-Vector2<T> Vector2<T>::operator*(S a_scalar) const
+Vector2<T> Vector2<T>::operator*(T a_scalar) const
 {
 	return Vector2<T>(x * a_scalar, y * a_scalar);
 
 }
 
-template<class T, typename S>  //Scalar
-//If its not a friend, the left hand side will HAVE to be a Vector2 when that's not necessarily always the case.
-Vector2<T> operator*(S a_scalar, const Vector2<T> & a_rhs)
+//template<class T>
+//Vector2<T> operator*(T a_scalar, const Vector2<T>& a_rhs)
+//{
+//	return a_rhs * a_scalar;
+//}
+
+template<class T>
+Vector2<T> Vector2<T>::operator/(T a_scalar) const
 {
-	return Vector2<T>(a_scalar * a_rhs.x, a_scalar * a_rhs.y);      //Return a Vector2 which concatenates the scalar and the right hand side
+	return Vector2<T>(x / a_scalar, y / a_scalar);
+
 }
 
 template<class T>
@@ -92,18 +88,17 @@ Vector2<T> & Vector2<T>::operator-=(const Vector2 & a_rhs)
 }
 
 template<class T>
-template<typename S>
-Vector2<T> & Vector2<T>::operator*=(S a_scalar)
+Vector2<T> & Vector2<T>::operator*=(T a_scalar)
 {
 	*this = *this * a_scalar;
 	return *this;
 }
 
 template<class T>
-template<typename S>
-Vector2<T> & Vector2<T>::operator/=(S a_scalar)
+Vector2<T> & Vector2<T>::operator/=(T a_scalar)
 {
 	*this = *this / a_scalar;
+	return *this;
 }
 #pragma endregion
 
@@ -141,7 +136,7 @@ T Vector2<T>::magnitude()
 }
 
 template<class T>
-void Vector2<T>::normalize()
+void Vector2<T>::normalise()
 {
 	T m = magnitude();                                        //Compute magnitude only once for efficiency
 	x /= m, y /= m;

@@ -1,4 +1,5 @@
 #include "Matrix2.h"
+#include <math.h>
 
 ///Constructors
 template<class T>
@@ -10,11 +11,11 @@ Matrix2<T>::Matrix2(Matrix2 &a_rhs) : m11(a_rhs.m11), m12(a_rhs.m12),
 m21(a_rhs.m21), m22(a_rhs.m22) {}                   //Copy constructor, copy information from Matrix into the other
 
 template<class T>
-Matrix2<T>::Matrix2(float *a_ptr) : m11(a_ptr[0]), m12(a_ptr[1]),                          //Construct from list of floats
+Matrix2<T>::Matrix2(T *a_ptr) : m11(a_ptr[0]), m12(a_ptr[1]),                          //Construct from list of floats
 m21(a_ptr[2]), m22(a_ptr[3]) {}
 
 template<class T>
-Matrix2<T>::Matrix2(float a_m11, float a_m12, float a_m21, float a_m22) : m11(a_m11), m12(a_m12),
+Matrix2<T>::Matrix2(T a_m11, T a_m12, T a_m21, T a_m22) : m11(a_m11), m12(a_m12),
 m21(a_m21), m22(a_m22) {}
 
 #pragma region Base Operators
@@ -59,48 +60,54 @@ Matrix2<T>& Matrix2<T>::operator *=(const Matrix2 &a_rhs) {
 ///Created out of the lhs
 template<class T>
 Matrix2<T> Matrix2<T>::createIdentity() {                                      //Return default matrix
-	return Matrix2<T>(1, 0
-		0, 1);
+	return Matrix2<T>(1, 0,
+					  0, 1);
 }
 
 template<class T>
-Matrix2<T> Matrix2<T>::createRotationZ(float a_rot) {                          //Return rotated Matrix2
-	return Matrix2<T>(cosf(a_rot), sinf(a_rot),
-		-sinf(a_rot), cos(a_rot));
+Matrix2<T> Matrix2<T>::createRotationZ(float a_rot) {                          //Return Matrix2 for rotating around Z axis
+	return Matrix2<T>((T)cosf(a_rot), (T)sinf(a_rot),
+					 -(T)sinf(a_rot), (T)cosf(a_rot));
 }
 
 template<class T>
-Matrix2<T> Matrix2<T>::createScale(float a_xScale, float a_yScale) {           //Return scaled Matrix2
-	return Matrix2<T>(a_xScale, m12,
-		m21, a_yScale);
+Matrix2<T> Matrix2<T>::createScale(T a_xScale, T a_yScale) {           //Return Matrix2 for scaling
+	return Matrix2<T>(a_xScale, 0,
+					  0, a_yScale);
 }
 ///Setters
 template<class T>
-void Matrix2<T>::set(float a_m11, float a_m12, float a_m21, float a_m22)   	// rebuild the matrix
+void Matrix2<T>::set(T a_m11, T a_m12, T a_m21, T a_m22)   	// rebuild the matrix
 {
 	m11 = a_m11, m12 = a_m12;
 	m21 = a_m21, m22 = a_m22;
 }
 
 template<class T>
-void Matrix2<T>::set(float *a_ptr)                                        	// rebuild the matrix - expects pointer to array of 4 floats
+void Matrix2<T>::set(T *a_ptr)                                        	// rebuild the matrix - expects pointer to array of 4 floats
 {
-	m11 = a_ptr[0], m12 = a_ptr[1];
-	m21 = a_ptr[2], m22 = a_ptr[3];
+	//Assign values with for loop for readability
+	auto index = 0;
+	for (auto r = 0; r < 2; r++) {
+		for (auto c = 0; c < 2; c++) {
+			mm[r][c] = a_ptr[index];
+			index++;
+		}
+	}
 }
 
 template<class T>
 void Matrix2<T>::setRotateZ(float a_rot)                                 // Rotate Matrix2 on the z axis circle
 {
-	m11 = cosf(a_rot), m12 = sinf(a_rot);
-	m21 = -sinf(a_rot), m22 = cosf(a_rot);
+	m11 = (T)cosf(a_rot), m12 = (T)sinf(a_rot);
+	m21 = -(T)sinf(a_rot), m22 = (T)cosf(a_rot);
 }
 
 template<class T>
-void Matrix2<T>::setScale(float a_scaleX, float a_scaleY)                 // Scale matrix by given values
+void Matrix2<T>::setScale(T a_scaleX, T a_scaleY)                 // Scale matrix by given values
 {
-	m[0][0] = a_scaleX; //Xx
-	m[1][1] = a_scaleY; //Yy
+	mm[0][0] = a_scaleX; //Xx
+	mm[1][1] = a_scaleY; //Yy
 }
 #pragma endregion
 //Casts matrix to float pointer
@@ -114,5 +121,3 @@ EXPIMP_TEMPLATE template class LIBRARY_API Matrix2<int>;
 EXPIMP_TEMPLATE template class LIBRARY_API Matrix2<short>;
 EXPIMP_TEMPLATE template class LIBRARY_API Matrix2<double>;
 EXPIMP_TEMPLATE template class LIBRARY_API Matrix2<float>;
-
-

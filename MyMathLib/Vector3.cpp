@@ -1,23 +1,14 @@
 #include <Vector3.h>
 
-/*When dealing with multiple template variables the template definitions MUST be on separate lines unless its a friend:
-CLASS:
-template <class T>
-template <typename S>
-
-FRIEND:
-template <class T, typename S>
-*/
-
 #pragma region Constructors
 template<class T>
-Vector3<T>::Vector3() : x(0), y(0) {}
+Vector3<T>::Vector3() : x(0), y(0), z(0) {}
 
 template<class T>
-Vector3<T>::Vector3(T a_x, T a_y) : x(a_x), y(a_y) {}
+Vector3<T>::Vector3(T a_x, T a_y, T a_z) : x(a_x), y(a_y), z(a_z) {}
 
 template<class T>
-Vector3<T>::Vector3(const Vector3 & a_rhs) : x(a_rhs.x), y(a_rhs.y) {}   //Copy/reference constructor
+Vector3<T>::Vector3(const Vector3 & a_rhs) : x(a_rhs.x), y(a_rhs.y), z(a_rhs.z) {}   //Copy/reference constructor
 
 #pragma endregion
 
@@ -42,18 +33,17 @@ Vector3<T> & Vector3<T>::operator=(const Vector3 & a_rhs)
 }
 
 template<class T>
-template<typename S>
-Vector3<T> Vector3<T>::operator*(S a_scalar) const
+Vector3<T> Vector3<T>::operator*(T a_scalar) const
 {
 	return Vector3<T>(x * a_scalar, y * a_scalar, z * a_scalar);
 
 }
 
-template<class T, typename S>  //Scalar
-							   //If its not a friend, the left hand side will HAVE to be a Vector3 when that's not necessarily always the case.
-Vector3<T> operator*(S a_scalar, const Vector3<T> & a_rhs)
+template<class T>
+Vector3<T> Vector3<T>::operator/(T a_scalar) const
 {
-	return Vector3<T>(a_scalar * a_rhs.x, a_scalar * a_rhs.y, a_scalar * a_rhs.z);   //Return a Vector3 which concatenates the scalar and the right hand side
+	return Vector3<T>(x / a_scalar, y / a_scalar, z / a_scalar);
+
 }
 
 template<class T>
@@ -92,18 +82,17 @@ Vector3<T> & Vector3<T>::operator-=(const Vector3 & a_rhs)
 }
 
 template<class T>
-template<typename S>
-Vector3<T> & Vector3<T>::operator*=(S a_scalar)
+Vector3<T> & Vector3<T>::operator*=(T a_scalar)
 {
 	*this = *this * a_scalar;
 	return *this;
 }
 
 template<class T>
-template<typename S>
-Vector3<T> & Vector3<T>::operator/=(S a_scalar)
+Vector3<T> & Vector3<T>::operator/=(T a_scalar)
 {
 	*this = *this / a_scalar;
+	return *this;
 }
 #pragma endregion
 
