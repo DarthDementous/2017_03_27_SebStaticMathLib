@@ -1,8 +1,0 @@
-﻿  Utility.cpp
-Utility.cpp(7): warning C4273: 'degToRad': inconsistent dll linkage
-  C:\Users\ATWindows7\Documents\Repositories\2017_03_27_SebStaticMathLib\MyMathLib\Build\Include\Utility.h(10): note: see previous definition of 'degToRad'
-Utility.cpp(12): warning C4273: 'radToDeg': inconsistent dll linkage
-  C:\Users\ATWindows7\Documents\Repositories\2017_03_27_SebStaticMathLib\MyMathLib\Build\Include\Utility.h(11): note: see previous definition of 'radToDeg'
-Utility.cpp(17): warning C4273: 'LinearHalf': inconsistent dll linkage
-  C:\Users\ATWindows7\Documents\Repositories\2017_03_27_SebStaticMathLib\MyMathLib\Build\Include\Utility.h(12): note: see previous definition of 'LinearHalf'
-  MyMathLib.vcxproj -> C:\Users\ATWindows7\Documents\Repositories\2017_03_27_SebStaticMathLib\MyMathLib\Build\MyMathLib.lib
