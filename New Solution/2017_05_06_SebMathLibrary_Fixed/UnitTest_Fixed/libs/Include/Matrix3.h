@@ -71,8 +71,8 @@ public:
 
 	T getRotation(char a_axis);
 #pragma endregion
-																   //Casts matrix to float pointer
+	//Casts matrix to pointer of type T
 	explicit operator T* ();                  //Return start of matrix memory address
-	Vector3<T> & operator [] (unsigned int index); //Return vector at specified index
+	Vector3<T> & operator [] (unsigned int index); //Return axis at specified index
 };
 

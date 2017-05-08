@@ -24,9 +24,9 @@ public:
 		struct { Vector2<T> v[2]; };               //Array of vectors (reads each row like a vector, do not use this to modify an axis!)
 	};
 #pragma region Base Operators
-	Matrix2 operator * (const Matrix2 &a_rhs) const;
+	Matrix2 operator * (const Matrix2 &a_rhs) const; 
 
-	Vector2<T> operator * (const Vector2<T> &a_rhs) const;           //Because we're not in the Vector2 template class, we need to specify what type it is in all uses.
+	Vector2<T> operator * (const Vector2<T> &a_rhs) const; //Because we're not in the Vector2 template class, we need to specify what type it is in all uses.
 
 	Matrix2 operator = (const Matrix2 &a_rhs);
 #pragma endregion
@@ -51,9 +51,9 @@ public:
 
 	void setScale(T a_scaleX, T a_scaleY);                 // Scale matrix by given values
 #pragma endregion
-	//Casts matrix to float pointer
+	//Casts matrix to pointer of type T
 	explicit operator T* ();                   //Return start of matrix memory address
-	Vector2<T> & operator [] (unsigned int index); //Return vector at specified index
+	Vector2<T> & operator [] (unsigned int index); //Return axis at specified index
 };
 
 

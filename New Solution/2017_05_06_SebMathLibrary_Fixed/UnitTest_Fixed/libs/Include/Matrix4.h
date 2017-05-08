@@ -56,9 +56,9 @@ public:
 	static Matrix4 createScale(T a_xScale, T a_yScale, T a_zScale);           //Return scaled Matrix4
 																						  ///Setters
 	void set(T a_m11, T a_m12, T a_m13, T a_m14,
-		     T a_m21, T a_m22, T a_m23, T a_m24,
-		     T a_m31, T a_m32, T a_m33, T a_m34,
-			 T a_m41, T a_m42, T a_m43, T a_m44);   	// rebuild the matrix
+		T a_m21, T a_m22, T a_m23, T a_m24,
+		T a_m31, T a_m32, T a_m33, T a_m34,
+		T a_m41, T a_m42, T a_m43, T a_m44);   	// rebuild the matrix
 
 	void set(T *a_ptr);                                        	// rebuild the matrix - expects pointer to array of 4 floats
 
@@ -76,9 +76,8 @@ public:
 
 	T getRotation(char a_axis);
 #pragma endregion
-	//Casts matrix to float pointer
+	//Casts matrix to pointer of type T
 	explicit operator T* ();                   //Return start of matrix memory address
-	Vector4<T> & operator [] (unsigned int index); //Return vector at specified index
+	Vector4<T> & operator [] (unsigned int index); //Return axis at specified index
 };
-
 

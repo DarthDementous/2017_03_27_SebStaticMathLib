@@ -1,0 +1,17 @@
+Microsoft (R) COFF/PE Dumper Version 14.00.23918.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file C:\Users\ATWindows7\Documents\Repositories\2017_05_06_SebMathLibrary_Fixed\UnitTest_Fixed\libs\Debug\2017_05_06_SebMathLibrary_Fixed_STATIC.lib
+
+File Type: LIBRARY
+
+  Summary
+
+       2ABBC .debug$S
+         508 .debug$T
+         1C7 .drectve
+         138 .rdata
+          1C .rtc$IMZ
+          1C .rtc$TMZ
+       127FE .text$mn

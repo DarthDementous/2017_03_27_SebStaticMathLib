@@ -68,10 +68,10 @@ public:
 
 	Vector4 getNormal();
 #pragma endregion
-	//Casts vector to float pointer
+	//Casts vector to pointer of type T
 	explicit operator T* ();
 
-	T & operator [] (unsigned int index);
+	T & operator [] (unsigned int index);    //Allows you to treat vector like an array by indexing memory to access variables
 };
 
 
