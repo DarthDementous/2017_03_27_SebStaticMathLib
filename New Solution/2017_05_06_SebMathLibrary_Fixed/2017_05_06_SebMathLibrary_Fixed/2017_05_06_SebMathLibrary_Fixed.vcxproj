@@ -27,6 +27,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\libs\Include\DLL.h" />
+    <ClInclude Include="..\libs\Include\MathLib_Utility.h" />
+    <ClInclude Include="..\libs\Include\Matrix2.h" />
+    <ClInclude Include="..\libs\Include\Matrix3.h" />
+    <ClInclude Include="..\libs\Include\Matrix4.h" />
+    <ClInclude Include="..\libs\Include\Vector2.h" />
+    <ClInclude Include="..\libs\Include\Vector3.h" />
+    <ClInclude Include="..\libs\Include\Vector4.h" />
     <ClInclude Include="Build\Include\DLL.h" />
     <ClInclude Include="Build\Include\MathLib_Utility.h" />
     <ClInclude Include="Build\Include\Matrix2.h" />
@@ -116,32 +124,35 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)Build\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)libs\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Config\$(Configuration)\</IntDir>
-    <IncludePath>$(ProjectDir)Build\Include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)libs\Include\;$(IncludePath)</IncludePath>
     <TargetName>$(ProjectName)_STATIC</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DLL_Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)Build\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)libs\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Config\$(Configuration)\</IntDir>
-    <IncludePath>$(ProjectDir)Build\Include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)libs\Include\;$(IncludePath)</IncludePath>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectDir)Build\Include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DLL_Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectDir)Build\Include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectDir)Build\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)libs\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Config\$(Configuration)\</IntDir>
-    <IncludePath>$(ProjectDir)Build\Include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)libs\Include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ProjectDir)Build\Include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -162,7 +173,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;USRDLL;MY2017_05_06_SEBMATHLIBRARY_FIXED_EXPORTS%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_USRDLL;MY2017_05_06_SEBMATHLIBRARY_FIXED_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

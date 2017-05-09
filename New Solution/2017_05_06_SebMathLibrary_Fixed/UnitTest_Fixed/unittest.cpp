@@ -19,6 +19,8 @@
 #define Matrix3 Matrix3<float>
 #define Matrix4 Matrix4<float>
 
+
+
 #if 1
 #ifndef NO_DEFAULT_STREAM_OPERATOR
 
@@ -150,7 +152,9 @@ bool TestFunc(const char* msg, T& a, float b) {
 #define TEST(a, b, c) {if (TestFunc(a, b, c) == false) {return false;}}
 #endif
 bool runUnitTests() {
-#if 1
+	//Vector2 v2 = Vector2(50);
+	//std::cout << v2.x << " " << v2.y << std::endl;
+#if 0
 	// vector addition
 	Vector2 v2a(13.5f, -48.23f), v2b(5, 3.99f), v2c;
 	v2c = v2a + v2b;

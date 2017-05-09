@@ -3,6 +3,9 @@
 
 #pragma region Constructors
 template<class T>
+Vector2<T>::Vector2(T a_val) : Vector2<T>(a_val, a_val) {}
+
+template<class T>
  Vector2<T>::Vector2() : x(0), y(0) {}
 
 template<class T>
