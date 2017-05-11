@@ -38,6 +38,19 @@ public:
 		return a_rhs * a_scalar;
 	}
 
+	LIBRARY_API friend T dot(const Vector4& a_vecA, const Vector4& a_vecB) {
+		return ((a_vecA.x * a_vecB.x) + (a_vecA.y * a_vecB.y) + (a_vecA.z * a_vecB.z));
+	}
+
+	LIBRARY_API friend Vector4 cross(const Vector4& a_vecA, const Vector4& a_vecB) {
+		return Vector4<T>((a_vecA.y * a_vecB.z - a_vecA.z * a_vecB.y), (a_vecA.z * a_vecB.x - a_vecA.x * a_vecB.z), (a_vecA.x * a_vecB.y - a_vecA.y * a_vecB.x), a_vecA.w * a_vecB.w);
+	}
+
+	LIBRARY_API friend Vector4 normal(Vector4& a_vec) {
+		T m = a_vec.magnitude();
+		return Vector4<T>(a_vec.x /= m, a_vec.y /= m, a_vec.z /= m, a_vec.w);                       //Return normalized version of parameters
+	}
+
 	Vector4 operator -() const;
 	///Conditions
 	bool operator == (const Vector4 &a_rhs) const;
@@ -74,6 +87,4 @@ public:
 
 	T & operator [] (unsigned int index);    //Allows you to treat vector like an array by indexing memory to access variables
 };
-
-
 

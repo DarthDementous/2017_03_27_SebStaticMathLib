@@ -152,7 +152,7 @@ template<class T>
 Vector4<T> Vector4<T>::getNormal()
 {
 	T m = magnitude();
-	return Vector4<T>(x /= m, y /= m, z /= m, w);                       //Return normalized version of lhs
+	return Vector4<T>(x /= m, y /= m, z /= m, w);                       //Return normalized version of parameters
 }
 #pragma endregion
 

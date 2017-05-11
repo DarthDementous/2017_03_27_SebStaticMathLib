@@ -126,14 +126,14 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)libs\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Config\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)libs\Include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)dependencies\glm\;$(SolutionDir)libs\Include\;$(IncludePath)</IncludePath>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DLL_Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)libs\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Config\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)libs\Include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)dependencies\glm\;$(SolutionDir)libs\Include\;$(IncludePath)</IncludePath>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -148,7 +148,7 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)libs\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Config\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)libs\Include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)dependencies\glm\;$(SolutionDir)libs\Include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

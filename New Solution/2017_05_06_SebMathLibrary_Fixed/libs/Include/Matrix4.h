@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector4.h"
 #include "DLL.h"
+#include <glm/mat4x4.hpp>
 template <class T>
 
 ///Matrix4 = 2D Matrix with no translation
@@ -45,6 +46,10 @@ public:
 
 #pragma region Functions
 	///Created out of the lhs
+	static Matrix4 createLookAt(const Vector4<T> &a_position, const Vector4<T> &a_target, const Vector4<T> &a_worldUp);  // Transform into camera space and orient camera to look at direction (View Transform Matrix)
+	
+	static Matrix4 createPerspective(T fovY, T aspect, T zNear, T zFar);  // Field of view, ratio, min cull distance, max cull distance
+
 	static Matrix4 createIdentity();                                      //Return default matrix
 
 	static Matrix4 createRotationX(float a_rot);
@@ -75,6 +80,10 @@ public:
 	Vector4<T> getTranslation();
 
 	T getRotation(char a_axis);
+
+	glm::mat4x4 convertToOpenGL();   // Allow math's library structures to be used in Bootstrap functions
+
+	Matrix4& convertFromOpenGL(glm::mat4x4& a_mat);
 #pragma endregion
 	//Casts matrix to pointer of type T
 	explicit operator T* ();                   //Return start of matrix memory address

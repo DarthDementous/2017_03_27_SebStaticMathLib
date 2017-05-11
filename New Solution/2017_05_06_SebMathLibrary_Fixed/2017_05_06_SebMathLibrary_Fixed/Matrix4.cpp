@@ -1,4 +1,5 @@
 #include "Matrix4.h"
+#include <cassert>
 #include <math.h>
 
 ///Constructors
@@ -85,6 +86,56 @@ Matrix4<T>& Matrix4<T>::operator *=(const Matrix4 &a_rhs) {
 #pragma endregion
 
 #pragma region Functions
+template<class T>
+Matrix4<T> Matrix4<T>::createLookAt(const Vector4<T> &a_position, const Vector4<T> &a_target, const Vector4<T> &a_worldUp)
+{
+	// Locate camera in world space and transform to camera space (camera is at origin looking in positive z-direction)
+	// Relocate objects in world space around camera's position (origin of camera space) AND orientation
+	/* METHODS TO CREATE A VIEW MATRIX
+	1. V = T * Rz * Ry * Rx     (combine translation matrix with rotation matrices for each axis)
+		V - View matrix
+		T - Translation matrix to reposition objects in the world
+		Rn - Rotation matrices that rotate objects along -x, -y and -z axis respectively
+
+		E.g. camera position is <10, 20, 100> pointing straight down
+		T - Move objects -10 on x axis, -20 on y axis and -100 on z axis
+		Rn - Compensates for how much the axes of camera space are rotated out of alignment with world space by applying rotations of equal BUT negative values to models in the scene:
+			Rotation matrix on the x axis -90 degrees
+		V - Result of combining translation matrix with rotation matrix so that the top of objects faces the character, making it seem like the camera is above the model
+	*/
+#if 1
+	Vector4<T> Zaxis = normal(a_target - a_position);           // f Front
+	Vector4<T> Xaxis = normal(cross(Zaxis, a_worldUp));         // s Side
+	Vector4<T> Yaxis = cross(Xaxis, Zaxis);                     // u Up
+
+	// Column major, negative z for openGL
+	return Matrix4<T>(
+		Xaxis.x,				Yaxis.x,				-Zaxis.x,				0,
+		Xaxis.y,				Yaxis.y,				-Zaxis.y,				0,
+		Xaxis.z,				Yaxis.z,				-Zaxis.z,				0,
+		-dot(Xaxis, a_position), -dot(Yaxis, a_position), dot(Zaxis, a_position), 1
+		);
+#endif
+}
+// OpenGL code
+template<class T>
+Matrix4<T> Matrix4<T>::createPerspective(T fovY, T aspect, T zNear, T zFar)
+{
+	// Check if values are valid
+	assert(aspect != 0);
+	assert(zFar != zNear);
+
+	T tanHalfFovY = tan(fovY / 2);
+
+	Matrix4<T> tmp;
+	tmp.mm[0][0] = 1 / (aspect * tanHalfFovY);
+	tmp.mm[1][1] = 1 / (tanHalfFovY);
+	tmp.mm[2][2] = -(zFar + zNear) / (zFar - zNear);
+	tmp.mm[2][3] = -1;
+	tmp.mm[3][2] = -(2 * zFar * zNear) / (zFar - zNear);
+	
+	return tmp;
+}
 ///Created out of the lhs
 template<class T>
 Matrix4<T> Matrix4<T>::createIdentity() {                                      //Return default matrix
@@ -221,6 +272,27 @@ T Matrix4<T>::getRotation(char a_axis) {
 		return -(T)atan2(double(mm[1][1]), double(mm[0][1]));            //Get the angle between the Y global axis and the local Y axis tan(adj/opp = Yy/Yx). Negative = counter-clockwise
 	}
 	return -(T)atan2(double(mm[1][1]), double(mm[0][1]));
+}
+template<class T>
+glm::mat4x4 Matrix4<T>::convertToOpenGL()
+{
+	glm::mat4x4 tmp;
+	for (auto r = 0; r < 4; r++) {
+		for (auto c = 0; c < 4; c++) {
+			tmp[r][c] = mm[r][c];
+		}
+	}
+	return tmp;
+}
+
+template<class T>
+Matrix4<T>& Matrix4<T>::convertFromOpenGL(glm::mat4x4 &a_mat) {
+	for (auto r = 0; r < 4; r++) {
+		for (auto c = 0; c < 4; c++) {
+			mm[r][c] = a_mat[r][c];
+		}
+	}
+	return *this;
 }
 #pragma endregion
 //Casts matrix to float pointer
