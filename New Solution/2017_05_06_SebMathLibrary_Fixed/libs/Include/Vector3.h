@@ -10,6 +10,7 @@ class LIBRARY_API Vector3
 {
 public:
 	///Constructor
+	Vector3(T a_val);
 	Vector3();
 	Vector3(T a_x, T a_y, T a_z);
 	Vector3(const Vector3& a_rhs); //Copy/reference constructor

@@ -2,6 +2,8 @@
 
 #pragma region Constructors
 template<class T>
+Vector4<T>::Vector4(T a_val) : Vector4<T>(a_val, a_val, a_val, 0) {}                            //Vector by default
+template<class T>
 Vector4<T>::Vector4() : x(0), y(0), z(0), w(0) {}
 
 template<class T>

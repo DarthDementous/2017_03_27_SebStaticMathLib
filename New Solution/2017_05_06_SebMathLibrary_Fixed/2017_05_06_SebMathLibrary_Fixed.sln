@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2017_05_06_SebMathLibrary_F
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest_Fixed", "UnitTest_Fixed\UnitTest_Fixed.vcxproj", "{104DA0A7-8429-47E7-8FFC-260FF4A1C2BD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DLLTemplate", "DLLTemplate\DLLTemplate.vcxproj", "{12219FCB-BA97-44A8-A97A-8A6AAAA32CBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{104DA0A7-8429-47E7-8FFC-260FF4A1C2BD}.Release|x64.Build.0 = Release|x64
 		{104DA0A7-8429-47E7-8FFC-260FF4A1C2BD}.Release|x86.ActiveCfg = Release|Win32
 		{104DA0A7-8429-47E7-8FFC-260FF4A1C2BD}.Release|x86.Build.0 = Release|Win32
+		{12219FCB-BA97-44A8-A97A-8A6AAAA32CBF}.Debug|x64.ActiveCfg = Debug|x64
+		{12219FCB-BA97-44A8-A97A-8A6AAAA32CBF}.Debug|x64.Build.0 = Debug|x64
+		{12219FCB-BA97-44A8-A97A-8A6AAAA32CBF}.Debug|x86.ActiveCfg = Debug|Win32
+		{12219FCB-BA97-44A8-A97A-8A6AAAA32CBF}.Debug|x86.Build.0 = Debug|Win32
+		{12219FCB-BA97-44A8-A97A-8A6AAAA32CBF}.Release|x64.ActiveCfg = Release|x64
+		{12219FCB-BA97-44A8-A97A-8A6AAAA32CBF}.Release|x64.Build.0 = Release|x64
+		{12219FCB-BA97-44A8-A97A-8A6AAAA32CBF}.Release|x86.ActiveCfg = Release|Win32
+		{12219FCB-BA97-44A8-A97A-8A6AAAA32CBF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
