@@ -73,7 +73,7 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Config\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)libs\Include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)dependencies\glm\;$(SolutionDir)libs\Include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)libs\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -83,7 +83,7 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Config\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)libs\Include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)dependencies\glm\;$(SolutionDir)libs\Include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)libs\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

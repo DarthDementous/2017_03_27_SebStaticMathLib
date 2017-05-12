@@ -10,7 +10,7 @@ m31(0), m32(0), m33(1), m34(0),
 m41(0), m42(0), m43(0), m44(1) {}
 
 template<class T>
-Matrix4<T>::Matrix4(Matrix4 &a_rhs) : m11(a_rhs.m11), m12(a_rhs.m12), m13(a_rhs.m13), m14(a_rhs.m14),    //Copy constructor, copy information from Matrix into the other
+Matrix4<T>::Matrix4(const Matrix4 &a_rhs) : m11(a_rhs.m11), m12(a_rhs.m12), m13(a_rhs.m13), m14(a_rhs.m14),    //Copy constructor, copy information from Matrix into the other
 m21(a_rhs.m21), m22(a_rhs.m22), m23(a_rhs.m23), m24(a_rhs.m24),
 m31(a_rhs.m31), m32(a_rhs.m32), m33(a_rhs.m33), m34(a_rhs.m34),
 m41(a_rhs.m41), m42(a_rhs.m42), m43(a_rhs.m43), m44(a_rhs.m44) {}
@@ -186,6 +186,15 @@ Matrix4<T> Matrix4<T>::createScale(T a_xScale, T a_yScale, T a_zScale) {        
 	tmp.mm[2][2] = a_zScale;	      //Zz
 	return tmp;
 }
+
+template<class T>
+Matrix4<T> Matrix4<T>::createTranslation(T a_transX, T a_transY, T a_transZ) {           //Return scaled Matrix4
+	Matrix4<T> tmp;
+	tmp.mm[0][3] = a_transX;          //Wx
+	tmp.mm[1][3] = a_transY;		  //Wy
+	tmp.mm[2][3] = a_transZ;	      //Wz
+	return tmp;
+}
 ///Setters
 template<class T>
 void Matrix4<T>::set(T a_m11, T a_m12, T a_m13, T a_m14,          // Rebuild the matrix with parameters
@@ -259,20 +268,41 @@ void Matrix4<T>::setTranslate(T a_transX, T a_transY, T a_transZ)
 }
 
 template<class T>
-Vector4<T> Matrix4<T>::getTranslation() {
-	return Vector4<T>{mm[0][3], mm[1][3], mm[2][3], mm[3][3]};         //Matrix4 can double as a 2D Matrix with translation capabilities, return translation axis
+Vector4<T> Matrix4<T>::getTranslation() const {
+	return Vector4<T>{mm[0][3], mm[1][3], mm[2][3], mm[3][3]};         //Matrix4 is a 3D Matrix with translation capabilities, return translation axis
+}
+
+/* Euler angle extraction code sourced from:
+https://www.learnopencv.com/rotation-matrix-to-euler-angles/
+*/
+template<class T>
+Vector4<T> Matrix4<T>::getRotation() {
+	float sy = sqrt14(mm[0][0] * mm[0][0] + mm[1][0] * mm[1][0]);
+
+	bool singular = sy < 1e-6; // If
+
+	float x, y, z;
+	if (!singular)
+	{
+		x = atan2(mm[2][1], mm[2][2]);
+		y = atan2(mm[2][0], sy);
+		z = atan2(mm[1][0], mm[0][0]);
+	}
+	else
+	{
+		x = atan2(-mm[1][2], mm[1][1]);
+		y = atan2(-mm[2][0], sy);
+		z = 0;
+	}
+
+	return Vector4<T>(x, y, z, 0);
 }
 
 template<class T>
-T Matrix4<T>::getRotation(char a_axis) {
-	switch (a_axis)
-	{
-		// ONLY WORKS IF NOT SKEWED (FORMS A RIGHT ANGLED TRIANGLE)
-	case 'Z':                                       //atan2 = takes 2 arguments
-		return -(T)atan2(double(mm[1][1]), double(mm[0][1]));            //Get the angle between the Y global axis and the local Y axis tan(adj/opp = Yy/Yx). Negative = counter-clockwise
-	}
-	return -(T)atan2(double(mm[1][1]), double(mm[0][1]));
+Vector4<T> Matrix4<T>::getScale() const {
+	return Vector4<T>(mm[0][0], mm[1][1], mm[2][2], 0);
 }
+
 template<class T>
 glm::mat4x4 Matrix4<T>::convertToOpenGL()
 {
