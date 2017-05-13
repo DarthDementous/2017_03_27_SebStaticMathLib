@@ -272,28 +272,15 @@ Vector4<T> Matrix4<T>::getTranslation() const {
 	return Vector4<T>{mm[0][3], mm[1][3], mm[2][3], mm[3][3]};         //Matrix4 is a 3D Matrix with translation capabilities, return translation axis
 }
 
-/* Euler angle extraction code sourced from:
-https://www.learnopencv.com/rotation-matrix-to-euler-angles/
-*/
 template<class T>
 Vector4<T> Matrix4<T>::getRotation() {
-	float sy = sqrt14(mm[0][0] * mm[0][0] + mm[1][0] * mm[1][0]);
+	// Calculate euler angles by reversing calculations used to create rotation
 
-	bool singular = sy < 1e-6; // If
+	T x = atan2(m32, m22);     //Yz / Yy
+	
+	T y = atan2(m31, m11);	   //Xz / Xx
 
-	float x, y, z;
-	if (!singular)
-	{
-		x = atan2(mm[2][1], mm[2][2]);
-		y = atan2(mm[2][0], sy);
-		z = atan2(mm[1][0], mm[0][0]);
-	}
-	else
-	{
-		x = atan2(-mm[1][2], mm[1][1]);
-		y = atan2(-mm[2][0], sy);
-		z = 0;
-	}
+	T z = atan2(m21, m11);	   //Xy / Xx
 
 	return Vector4<T>(x, y, z, 0);
 }
