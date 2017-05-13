@@ -10,8 +10,10 @@ float radToDeg(float radians)
 	return radians * (float)_180_OVER_PI;
 }
 
-float LinearHalf(float x)
+// Get center point between two points (Vector3s)
+Vector4<float> LinearHalf(Vector4<float> a_vec1, Vector4<float> a_vec2)
 {
-	return x * 0.5f;
+	// Create a vector between two points and halve it
+	return Vector4<float>((a_vec2 - a_vec1) / 2);
 }
 

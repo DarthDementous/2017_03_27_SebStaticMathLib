@@ -1,4 +1,5 @@
 #include <Vector4.h>
+#include <MathLib_Utility.h>
 
 #pragma region Constructors
 template<class T>
