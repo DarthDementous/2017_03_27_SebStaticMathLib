@@ -61,10 +61,10 @@ Vector4<T> Matrix4<T>::operator * (const Vector4<T> &a_rhs) const {             
 	[m41, m42, m43, m44]			 w]             [c_m41]
 	*/
 	return Vector4<T>
-		((m11 * a_rhs.x + m21 * a_rhs.y + m31 * a_rhs.z + m41 * a_rhs.w), //NOTE: When multiplying a matrice with a vector, it has to be treated cxr instead of rxc because the vector is
-		 (m12 * a_rhs.x + m22 * a_rhs.y + m32 * a_rhs.z + m42 * a_rhs.w), //technically a row vector, even though we're still getting the rows from the lhs and the columns from the rhs.
-		 (m13 * a_rhs.x + m23 * a_rhs.y + m33 * a_rhs.z + m43 * a_rhs.w),
-		 (m14 * a_rhs.x + m24 * a_rhs.y + m34 * a_rhs.z + m44 * a_rhs.w));
+		((m11 * a_rhs.x + m12 * a_rhs.y + m13 * a_rhs.z + m14 * a_rhs.w), 
+		 (m21 * a_rhs.x + m22 * a_rhs.y + m23 * a_rhs.z + m24 * a_rhs.w), 
+		 (m31 * a_rhs.x + m32 * a_rhs.y + m33 * a_rhs.z + m34 * a_rhs.w),
+		 (m41 * a_rhs.x + m42 * a_rhs.y + m43 * a_rhs.z + m44 * a_rhs.w));
 }
 
 template<class T>
@@ -104,17 +104,28 @@ Matrix4<T> Matrix4<T>::createLookAt(const Vector4<T> &a_position, const Vector4<
 		V - Result of combining translation matrix with rotation matrix so that the top of objects faces the character, making it seem like the camera is above the model
 	*/
 #if 1
+	Matrix4<T> tmp;
+
 	Vector4<T> Zaxis = normal(a_target - a_position);           // f Front
 	Vector4<T> Xaxis = normal(cross(Zaxis, a_worldUp));         // s Side
 	Vector4<T> Yaxis = cross(Xaxis, Zaxis);                     // u Up
 
 	// Column major, negative z for openGL
-	return Matrix4<T>(
-		Xaxis.x,				Yaxis.x,				-Zaxis.x,				0,
-		Xaxis.y,				Yaxis.y,				-Zaxis.y,				0,
-		Xaxis.z,				Yaxis.z,				-Zaxis.z,				0,
-		-dot(Xaxis, a_position), -dot(Yaxis, a_position), dot(Zaxis, a_position), 1
-		);
+	tmp[0][0] = Xaxis.x;
+	tmp[1][0] = Xaxis.y;
+	tmp[2][0] = Xaxis.z;
+	tmp[0][1] = Yaxis.x;
+	tmp[1][1] = Yaxis.y;
+	tmp[2][1] = Yaxis.z;
+	tmp[0][2] = -Zaxis.x;
+	tmp[1][2] = -Zaxis.y;
+	tmp[2][2] = -Zaxis.z;
+	tmp[3][0] = -dot(Xaxis, a_position);
+	tmp[3][1] = -dot(Yaxis, a_position);
+	tmp[3][2] = dot(Zaxis, a_position);
+
+	return tmp;
+
 #endif
 }
 // OpenGL code
